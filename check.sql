@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 22, 2021 at 01:13 PM
+-- Generation Time: Sep 22, 2021 at 02:34 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -512,6 +512,20 @@ INSERT INTO `cal` (`id`, `scheme`, `sem`, `branch`, `subject`, `credits`) VALUES
 (481, '17', '2', 'chem', 'COMPUTER PROGRAMMING LABORATORY', 2),
 (482, '17', '2', 'chem', 'COMPUTER PROGRAMMING LABORATORY', 2),
 (483, '17', '2', 'chem', 'ENVIRONMENTAL STUDIES', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `cus_id` int(11) NOT NULL,
+  `name` varchar(20) NOT NULL,
+  `email` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  `phone` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
