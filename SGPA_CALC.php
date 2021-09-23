@@ -138,9 +138,9 @@
 									(branch = '$branch' or branch = '$cycle')
 									and sem = '$sem' ");
 
-			?>
-			<form method="post">
-			<table border='1'>
+		
+
+			echo "<table border='1'>
 					<tr>
 					<th>subject</th>
 					<th>
@@ -149,29 +149,27 @@
 					<th>
 						Marks
 					</th>
-					</tr>
-			<?php
+					</tr>";
+
 			while($row = mysqli_fetch_array($result))
 			  {
 					  echo "<tr>";
 					  echo "<td>" . $row['subject'] . "</td>";
 					  echo "<td>" . $row['credits'] . "</td>";
 					  echo "<td>
-					  		<input type='text' placeholder = 'marks' name='marks'> / 100
+					  		<input type='text' min='0' max='10' placeholder = 'marks' name='marks'> / 10
 					  		</td>";
 					echo "</tr>";
 					
 					
 			  }
-			 
+			  
 			 echo" 
 			 <tr>
 				<th colspan = '4'><input class='button' type='Submit' value='Submit' name='' onclick='myFunc()'></th>
 			</tr>";
 
 			echo "</table>";
-
-			echo "</form>";
 
 
 			mysqli_close($conn);
