@@ -10,7 +10,7 @@ $address = "";
 
 
 // connect to the database
-$db = mysqli_connect('localhost', 'root', '', 'check');
+$db = mysqli_connect('localhost', 'root', '', 'internship_p2');
 
 // REGISTER USER
 if (isset($_POST['reg_user'])) {
