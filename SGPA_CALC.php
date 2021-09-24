@@ -85,11 +85,13 @@
 		
 			var mark = document.getElementsByName('marks');
 			let sum = 0;
+			
 			for( var i = 0; i < mark.length; i ++ ) {
     			var n = mark[i] || 0;
     			sum +=  parseInt(n.value);
-    			
+				
 			}
+			
 			
 			alert(sum);
 
