@@ -84,16 +84,19 @@
 		
 		
 			var mark = document.getElementsByName('marks');
-			let sum = 0;
 			
-			for( var i = 0; i < mark.length; i ++ ) {
-    			var n = mark[i] || 0;
-    			sum +=  parseInt(n.value);
-				
+			var cre = document.getElementsByName('credits');
+			let ct = 0;
+			let mt = 0
+			for( var i = 0; i < cre.length; i ++ ) {
+    			var n = parseInt(cre[i].value);
+    			var m = parseInt(mark[i].value) ;
+				var temp = n*m;
+				ct += n;
+				mt += temp;
 			}
-			
-			
-			alert(sum);
+			var res = mt/ct;
+			document.getElementById("cgpa").innerHTML = "CGPA: "+ res;
 
 		}
 
@@ -139,10 +142,31 @@
 								WHERE scheme = '$scheme' and 
 									(branch = '$branch' or branch = '$cycle')
 									and sem = '$sem' ");
+			function integerToRoman($integer)
+			{
+			
+			 $integer = intval($integer);
+			 $result = '';
 
-		
+			 $lookup = array('V' => 5,'IV' => 4,'I' => 1);
+			 
+			 foreach($lookup as $roman => $value){
 
-			echo "<table border='1'>
+			  $matches = intval($integer/$value);
+
+			  $result .= str_repeat($roman,$matches);
+
+			  $integer = $integer % $value;
+			 }
+
+			 return $result;
+			} 
+			
+			echo"<h2>BRANCH:".strtoupper($branch). "&emsp;SEM:"		  .integerToRoman($sem).''."</h2>"		
+
+			?>
+
+			<table border='1'>
 					<tr>
 					<th>subject</th>
 					<th>
@@ -151,21 +175,26 @@
 					<th>
 						Marks
 					</th>
-					</tr>";
-
+					</tr>
+			<?php
 			while($row = mysqli_fetch_array($result))
 			  {
+				  
 					  echo "<tr>";
 					  echo "<td>" . $row['subject'] . "</td>";
 					  echo "<td>" . $row['credits'] . "</td>";
 					  echo "<td>
-					  		<input type='text' min='0' max='10' placeholder = 'marks' name='marks'> / 10
+					  		<input type='text' placeholder = 'marks' name='marks'> / 100
 					  		</td>";
+							  echo "
+					  		<input type='hidden' value=".$row['credits']." name='credits'>
+					  		";
 					echo "</tr>";
 					
 					
+					
 			  }
-			  
+			 
 			 echo" 
 			 <tr>
 				<th colspan = '4'><input class='button' type='Submit' value='Submit' name='' onclick='myFunc()'></th>
@@ -179,6 +208,7 @@
 		 }
 	?>
 
+<h2 id ="cgpa"></h2>
 	
 
 </body>
