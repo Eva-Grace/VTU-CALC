@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="externalStyle.css">
 <body>
 <h2>CGPA Calculator</h2>
-<br /><br />
+
 
 <div class="container">
     <h5> Enter the number of semesters:</h5>
