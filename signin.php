@@ -3,13 +3,12 @@
 <html>
 <head>
   <title>VTU CALCULATOR</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
+<link rel="stylesheet" type="text/css" href="externalStyle.css">
 <body>
-  <div class="header">
   	<h2>Signin</h2>
-  </div>
-	 
+
+	<div class="container"> 
   <form method="post" action="signin.php">
   	<?php include('errors.php'); ?>
   	<div class="input-group">
@@ -27,6 +26,6 @@
   		Not yet a member? <a href="signup.php">Sign up</a>
   	</p>
   </form>
-
+  </div>
 </body>
 </html>

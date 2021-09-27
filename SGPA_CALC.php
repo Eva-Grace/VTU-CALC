@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php include("header.php"); ?>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -12,7 +13,7 @@
 	<form method="post">
 	<div class="dropdown">
 		
-		<table border="10">
+		<table>
 		<tr rowspan="2">
 		<th colspan="2">
 		<select name="scheme" id="scheme">
@@ -84,20 +85,22 @@
 		
 		
 			var mark = document.getElementsByName('marks');
-			
 			var cre = document.getElementsByName('credits');
-			let ct = 0;
-			let mt = 0
-			for( var i = 0; i < cre.length; i ++ ) {
-    			var n = parseInt(cre[i].value);
-    			var m = parseInt(mark[i].value) ;
-				var temp = n*m;
-				ct += n;
-				mt += temp;
-			}
-			var res = mt/ct;
-			document.getElementById("cgpa").innerHTML = "CGPA: "+ res;
 
+				
+				let ct = 0;
+				let mt = 0	
+				for( var i = 0; i < cre.length; i ++ ) {
+					var n = parseInt(cre[i].value);
+					var m = parseInt(mark[i].value) ;
+					
+						var temp = n*m;
+						ct += n;
+						mt += temp;
+				}
+				var res = mt/ct;
+				document.getElementById("sgpa").innerHTML = "SGPA: "+ res;			
+			
 		}
 
 
@@ -166,7 +169,7 @@
 
 			?>
 
-			<table border='1'>
+			<table class="dropdown">
 					<tr>
 					<th>subject</th>
 					<th>
@@ -184,7 +187,7 @@
 					  echo "<td>" . $row['subject'] . "</td>";
 					  echo "<td>" . $row['credits'] . "</td>";
 					  echo "<td>
-					  		<input type='text' placeholder = 'marks' name='marks'> / 100
+					  		<input type='text' placeholder = 'marks' name='marks'> / 10
 					  		</td>";
 							  echo "
 					  		<input type='hidden' value=".$row['credits']." name='credits'>
@@ -194,11 +197,25 @@
 					
 					
 			  }
+			echo"<br/>";
 			 
 			 echo" 
-			 <tr>
+			<tr>
 				<th colspan = '4'><input class='button' type='Submit' value='Submit' name='' onclick='myFunc()'></th>
 			</tr>";
+			echo"<br/>";
+			echo"
+			<tr>
+			  <th colspan = '4'>
+				<div class = 'container'>
+					<button onclick = 'window.print()' >
+							Print
+					</button>
+				</div>
+			  </th>
+			</tr>"
+			;
+
 
 			echo "</table>";
 
@@ -208,8 +225,7 @@
 		 }
 	?>
 
-<h2 id ="cgpa"></h2>
-	
+<h2 id ="sgpa"></h2>
 
 </body>
 </html>
