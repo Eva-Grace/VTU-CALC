@@ -9,10 +9,19 @@
 <link rel="stylesheet" href="externalStyle.css">
 <body>
 	<h2>Choose Your Calculator</h2>
+	
 	<div class="container">
+		
+			<!-- <a href="SGPA_CALC.php"><button>SGPA CALCULATOR</button></a>
+			<br/>
+			<a href="CGPA.php"><button>CGPA CALCULATOR</button></a> -->
+		
 		<table>
 			<tr>
 				<td><a href="SGPA_CALC.php"><button>SGPA CALCULATOR</button></a></td>
+			</tr>
+			<tr>
+				<td></td>
 			</tr>
 			<tr>
 				<td><a href="CGPA.php"><button>CGPA CALCULATOR</button></a></td>

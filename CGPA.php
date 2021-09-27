@@ -102,7 +102,7 @@
 <h2 id="total"></h2>
 <div class = "container" >
 <div id="hiddenn_div" style="display:none;">
-	<button onclick = "window.print()" >
+	<button class="print" onclick = "window.print()" >
 			Print
 	</button>
 </div>

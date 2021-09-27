@@ -56,9 +56,11 @@
 		
 		</th>
 		</tr>
+		
 		<tr>
 				<th colspan = "4"><input class="button" type="Submit" value="Submit" name="" ></th>
 		</tr>
+		
 		</table>
 	
 	</div>
@@ -178,15 +180,16 @@
 			 return $result;
 			} 
 			
-			echo"<h2>BRANCH:".strtoupper($branch). "&emsp;SEM:"		  .integerToRoman($sem).''."</h2>"		
+			
+			echo"<h3>BRANCH:".strtoupper($branch). "&emsp;SEM:"		  .integerToRoman($sem).''."</h3>"		
 
 			?>
 
 			<table class="dropdown">
-					<tr>
-					<th>subject</th>
+					<tr class='subs'>
+					<th>SUBJECT</th>
 					<th>
-						Marks
+						MARKS
 					</th>
 					</tr>
 			<?php
@@ -194,9 +197,9 @@
 			  {
 				  
 					  echo "<tr>";
-					  echo "<td>" . $row['subject'] . "</td>";
+					  echo "<td class='subs'>" . $row['subject'] . "</td>";
 					  echo "<td>
-					  		<input type='number' placeholder = 'marks' name='marks'> / 10
+					  		<input type='number' placeholder = 'GradePoint' name='marks'> / 10
 					  		</td>";
 							  echo "
 					  		<input type='hidden' value=".$row['credits']." name='credits'>
@@ -216,11 +219,11 @@
 			echo"
 			<tr>
 			  <th colspan = '4'>
-				<div class = 'container'>
-					<button onclick = 'window.print()' >
+				
+					<button class='print' onclick = 'window.print()' >
 							Print
 					</button>
-				</div>
+				
 			  </th>
 			</tr>"
 			;
