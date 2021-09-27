@@ -98,7 +98,7 @@ button:hover {
 	font-family: Arial, Helvetica, sans-serif;
 }
 @media print {
-	.print, .button {
+	.print, .button, form,.content {
 	   visibility: hidden;
 	}
  }
