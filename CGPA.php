@@ -10,13 +10,22 @@
 <link rel="stylesheet" href="externalStyle.css">
 <body>
 <h2>CGPA Calculator</h2>
-<br /><br /><br /><br />
+<br /><br />
 
 <div class="container">
     <h5> Enter the number of semesters:</h5>
 </div>
 <div class="container">
-    <input type="number" name="" id="number" placeholder="sem" size="4" min="1" max="8" >
+    <select name="" id="number">
+        <option value="0">--SEM--</option>
+        <option value="2">II</option>
+        <option value="3">III</option>
+        <option value="4">IV</option>
+        <option value="5">V</option>
+        <option value="6">VI</option>
+        <option value="7">VII</option>
+        <option value="8">VIII</option>
+    </select>
 </div>
 <br />
 <div class="container">
@@ -25,27 +34,28 @@
     <br />
     <br />
 <div id="textboxes" class ="container">
-    
+
 </div>
 
+
 <script>
-    function textbox(event) {    
+    function textbox(event) { 
+        document.getElementById("textboxes").innerHTML="";   
         var a = document.getElementById("number").value;
         if(a>=1 && a<=8){
             for (i = 0; i < a; i++) {
-                var textbox = document.createElement("textarea");
+                var textbox = document.createElement("input");
+                textbox.setAttribute("type","number");
                 textbox.name= "cgpa";
-                textbox.id = "cgpa";   
+                textbox.id = "cgpa"; 
+                textbox.placeholder="SEM "+(i+1);  
                 document.getElementById("textboxes").appendChild(textbox);
                 document.getElementById('hidden_div').style.display = "block";
                 document.getElementById('hiddenn_div').style.display = "block"; 
 
             }
         }
-        else{
-            alert("Enter value less than 8");
-            
-        }
+
         
 }
 </script>
@@ -58,23 +68,35 @@
 
 <script>
     function calc(){
+        var flag=0;
         let sum = 0;
         let count = 0;
         var gp = document.getElementById("cgpa").value;
-        if(gp<=10){
-                for( var j = 0; j < cgpa.length; j ++ ) {
-                    var n = cgpa[j] || 0;
-                    sum +=  parseInt(n.value);
-                    count += 1;	
+            for( var j = 0; j < cgpa.length; j ++ ) {
+                if(cgpa[j].value==""){
+                    flag=1;
                 }
-            total = (sum/count);
-            document.getElementById("total").innerHTML = "CGPA: " + total;
-        }
-        else{
+                else if(cgpa[j].value>10)
+                {
+                   flag=2;
+                }
+                else{
+                        var n = cgpa[j] || 0;
+                        sum +=  parseFloat(n.value);
+                        count += 1;	
+                }
+           }
+           if (flag==1){
+            alert("All Fields are Required");
+           }
+           else if (flag==2){
             alert("Enter all values less than 10");
-
-        }
-     }
+           }
+           else{
+                total = parseFloat(sum/count).toFixed(2);
+                document.getElementById("total").innerHTML = "CGPA: " + total;
+            }
+    }
 </script>
 
 <h2 id="total"></h2>

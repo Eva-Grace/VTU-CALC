@@ -17,7 +17,7 @@
 		<tr rowspan="2">
 		<th colspan="2">
 		<select name="scheme" id="scheme">
-  			<option value="null">--scheme--</option>
+  			<option value="null">--SCHEME--</option>
   			<option value="17">2017</option>
   			<option value="18">2018</option>
 		</select>
@@ -26,7 +26,7 @@
 
 		<th>
 		<select name="branch" id="branch">
-			<option value="null">--branch--</option>
+			<option value="null">--BRANCH--</option>
   			<option value="cs">CSE</option>
   			<option value="ec">ECE</option>
   			<option value="is">ISE</option>
@@ -37,7 +37,7 @@
 		
 		<th>
 		<select name="sem" id="sem" onchange="cycleFunc()">
-			<option value="0">--sem--</option>
+			<option value="0">--SEM--</option>
 			<option value="1">1</option>
   			<option value="2">2</option>
   			<option value="3">3</option>
@@ -66,7 +66,8 @@
 	
 
 	<script>
-		function myFunc(){
+		function myFunc()
+		{
 			var sc = document.getElementById("scheme");
 			var schemeValue = sc.options[sc.selectedIndex].value;
 			var schemeText = sc.options[sc.selectedIndex].text;
@@ -86,21 +87,32 @@
 		
 			var mark = document.getElementsByName('marks');
 			var cre = document.getElementsByName('credits');
-
-				
-				let ct = 0;
-				let mt = 0	
-				for( var i = 0; i < cre.length; i ++ ) {
-					var n = parseInt(cre[i].value);
-					var m = parseInt(mark[i].value) ;
-					
-						var temp = n*m;
-						ct += n;
-						mt += temp;
+			var flag=1;
+			let ct = 0;
+			let mt = 0	
+			for( var i = 0; i < cre.length; i ++ ) {
+				var n = parseInt(cre[i].value);
+				var m = parseInt(mark[i].value) ;
+				if (mark[i].value==""){
+					flag=0;
 				}
-				var res = mt/ct;
+				if(mark[i].value>10){
+					flag=2;
+				}
+				else{
+					var temp = n*m;
+					ct += n;
+					mt += temp;
+				}
+			}
+			if (flag==0)
+				alert("All Fields are Required");
+			else if(flag==2)
+				alert("Enter all values less than 10");
+			else{
+				var res = parseFloat(mt/ct).toFixed(2);
 				document.getElementById("sgpa").innerHTML = "SGPA: "+ res;			
-			
+			}
 		}
 
 
@@ -122,7 +134,7 @@
 
 	</script>
 	
-	<?php
+	<?php	
 		$count=0;
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			$host = "localhost";
@@ -147,6 +159,7 @@
 									and sem = '$sem' ");
 			function integerToRoman($integer)
 			{
+				
 			
 			 $integer = intval($integer);
 			 $result = '';
@@ -173,9 +186,6 @@
 					<tr>
 					<th>subject</th>
 					<th>
-						credits
-					</th>
-					<th>
 						Marks
 					</th>
 					</tr>
@@ -185,9 +195,8 @@
 				  
 					  echo "<tr>";
 					  echo "<td>" . $row['subject'] . "</td>";
-					  echo "<td>" . $row['credits'] . "</td>";
 					  echo "<td>
-					  		<input type='text' placeholder = 'marks' name='marks'> / 10
+					  		<input type='number' placeholder = 'marks' name='marks'> / 10
 					  		</td>";
 							  echo "
 					  		<input type='hidden' value=".$row['credits']." name='credits'>
