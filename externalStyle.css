@@ -168,3 +168,7 @@ form,
     width: fit-content;
     padding: 1px;
 }
+
+#cgpa {
+    width: 40%;
+}
