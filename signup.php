@@ -32,10 +32,6 @@
   	  	<label>Phone</label>
   	  	<input type="tel" name="phone" placeholder="1234567890" pattern="[0-9]{10}">
   	</div>
-	<div class="input-group1">
-  	  	<label>Address</label>
-  	  	<input type="text" name="address" value="<?php echo $address; ?>" placeholder="Enter Your Address">
-  	</div>
   	<div class="input-group1">
   	  	<button type="submit" class="btn" name="reg_user">Register</button>
   	</div>
