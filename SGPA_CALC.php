@@ -10,7 +10,7 @@
 <body>
 	<h2>SGPA CALCULATOR</h2>
 
-	<form method="post">
+	<form id="selection-box" method="post">
 	<div class="dropdown">
 		
 		<table>
@@ -37,7 +37,7 @@
 		
 		<th>
 		<select name="sem" id="sem" onchange="cycleFunc()">
-			<option value="0">--SEM--</option>
+			<option value="null">--SEM--</option>
 			<option value="1">1</option>
   			<option value="2">2</option>
   			<option value="3">3</option>
@@ -94,7 +94,7 @@
 			let mt = 0	
 			for( var i = 0; i < cre.length; i ++ ) {
 				var n = parseInt(cre[i].value);
-				var m = parseInt(mark[i].value) ;
+				var m = parseFloat(mark[i].value) ;
 				if (mark[i].value==""){
 					flag=0;
 				}
@@ -154,6 +154,12 @@
 			$branch = $_POST['branch']; 
 			$sem = $_POST['sem'];
 			$cycle = $_POST['cycle'];
+			if ($scheme=="null"|| $branch=="null" || $sem=="null") 
+			{
+				 echo'<script>alert("Select Inputs")</script>';  
+			}
+			else{
+
 
 			$result = mysqli_query($conn,"SELECT * FROM cal
 								WHERE scheme = '$scheme' and 
@@ -180,9 +186,7 @@
 			 return $result;
 			} 
 			
-			
-			echo"<h3>BRANCH:".strtoupper($branch). "&emsp;SEM:"		  .integerToRoman($sem).''."</h3>"		
-
+			echo"<h3>BRANCH:".strtoupper($branch). "&emsp;SEM:"		  .integerToRoman($sem).''."</h3>";	
 			?>
 
 			<table class="dropdown">
@@ -209,7 +213,6 @@
 					
 					
 			  }
-			echo"<br/>";
 			 
 			 echo" 
 			<tr>
@@ -235,9 +238,10 @@
 			mysqli_close($conn);
 
 		 }
+		}
 	?>
 
-<h2 id ="sgpa"></h2>
+<h3 id ="sgpa"></h3>
 
 </body>
 </html>

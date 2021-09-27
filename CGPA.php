@@ -29,7 +29,7 @@
 </div>
 <br />
 <div class="container">
-    <input type="button" value="Submit" onclick="textbox()" />
+    <input class="button" type="button" value="Submit" onclick="textbox()" />
 </div>
     <br />
     <br />
@@ -62,7 +62,7 @@
 <br/>
 <div class ="container" >
 <div id="hidden_div" style="display:none;" >
-    <input type="button" value="Submit" onclick="calc()" />
+    <input class="button" type="button" value="Submit" onclick="calc()" />
 </div>
 </div>
 
@@ -99,7 +99,7 @@
     }
 </script>
 
-<h2 id="total"></h2>
+<h3 id="total"></h3>
 <div class = "container" >
 <div id="hiddenn_div" style="display:none;">
 	<button class="print" onclick = "window.print()" >
