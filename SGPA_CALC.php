@@ -86,7 +86,7 @@
 			var cycleValue = cyc.options[cyc.selectedIndex].value;
 			var cycleText = cyc.options[cyc.selectedIndex].text;	
 		
-		
+		// getting marks from the user and credits from the database to calculate the SGPA	
 			var mark = document.getElementsByName('marks');
 			var cre = document.getElementsByName('credits');
 			var flag=1;
@@ -95,10 +95,10 @@
 			for( var i = 0; i < cre.length; i ++ ) {
 				var n = parseInt(cre[i].value);
 				var m = parseFloat(mark[i].value) ;
-				if (mark[i].value==""){
+				if (mark[i].value==""){								//checking for empty value						
 					flag=0;
 				}
-				if(mark[i].value>10){
+				if(mark[i].value>10){								//condition to check if value greater than 10 is entered
 					flag=2;
 				}
 				else{
@@ -165,25 +165,20 @@
 								WHERE scheme = '$scheme' and 
 									(branch = '$branch' or branch = '$cycle')
 									and sem = '$sem' ");
+
+			// function to convert decimal to roman numbers
 			function integerToRoman($integer)
-			{
+			{							
+				$integer = intval($integer);
+				$result = '';
+				$lookup = array('V' => 5,'IV' => 4,'I' => 1);
 				
-			
-			 $integer = intval($integer);
-			 $result = '';
-
-			 $lookup = array('V' => 5,'IV' => 4,'I' => 1);
-			 
-			 foreach($lookup as $roman => $value){
-
-			  $matches = intval($integer/$value);
-
-			  $result .= str_repeat($roman,$matches);
-
-			  $integer = $integer % $value;
-			 }
-
-			 return $result;
+				foreach($lookup as $roman => $value){
+					$matches = intval($integer/$value);
+					$result .= str_repeat($roman,$matches);
+					$integer = $integer % $value;
+				}
+				return $result;
 			} 
 			
 			echo"<h3>BRANCH:".strtoupper($branch). "&emsp;SEM:"		  .integerToRoman($sem).''."</h3>";	

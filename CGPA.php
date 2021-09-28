@@ -41,17 +41,17 @@
 <script>
     function textbox(event) { 
         document.getElementById("textboxes").innerHTML="";   
-        var a = document.getElementById("number").value;
-        if(a>=1 && a<=8){
+        var a = document.getElementById("number").value;    
+        if(a>=1 && a<=8){                                                               // making sure that the sem number is between 1 and 8
             for (i = 0; i < a; i++) {
                 var textbox = document.createElement("input");
                 textbox.setAttribute("type","number");
                 textbox.name= "cgpa";
                 textbox.id = "cgpa"; 
                 textbox.placeholder="SEM "+(i+1);  
-                document.getElementById("textboxes").appendChild(textbox);
-                document.getElementById('hidden_div').style.display = "block";
-                document.getElementById('hiddenn_div').style.display = "block"; 
+                document.getElementById("textboxes").appendChild(textbox);              //appending textbox
+                document.getElementById('hidden_div').style.display = "block";          //appending submit button
+                document.getElementById('hiddenn_div').style.display = "block";         //appending print button
 
             }
         }
@@ -73,10 +73,10 @@
         let count = 0;
         var gp = document.getElementById("cgpa").value;
             for( var j = 0; j < cgpa.length; j ++ ) {
-                if(cgpa[j].value==""){
+                if(cgpa[j].value==""){                                      // making sure that no field is empty
                     flag=1;
                 }
-                else if(cgpa[j].value>10)
+                else if(cgpa[j].value>10)                                   // making sure that textbox value does not exceed 10
                 {
                    flag=2;
                 }
@@ -93,7 +93,7 @@
             alert("Enter all values less than 10");
            }
            else{
-                total = parseFloat(sum/count).toFixed(2);
+                total = parseFloat(sum/count).toFixed(2);               // two digits after decimal point
                 document.getElementById("total").innerHTML = "CGPA: " + total;
             }
     }
